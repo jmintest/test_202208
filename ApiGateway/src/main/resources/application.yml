@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+eureka:
+  port: 8761
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.ip-address:localhost}:${eureka.port:8761}/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+      - id: search-service
+        uri: lb://SEARCH-SERVICE
+        predicates:
+        - Path=/search/**
+      - id: keywork-service
+        uri: lb://KEYWORK-SERVICE
+        predicates:
+        - Path=/keyword/**        
+logging:
+  file:
+    name: api-gateway.log
+    path: ./data/logs  
