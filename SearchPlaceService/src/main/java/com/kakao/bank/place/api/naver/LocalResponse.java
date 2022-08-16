@@ -23,4 +23,14 @@ public class LocalResponse {
 	public String roadAddress;// 검색 결과 업체, 기관명의 도로명 주소를 제공한다.
 	public Integer mapx;// 검색 결과 업체, 기관명 위치 정보의 x좌표를 제공한다. 제공값은 카텍좌표계 값으로 제공된다. 이 좌표값은 지도 API와 연동 가능하다.
 	public Integer mapy;// 검색 결과 업체, 기관명 위치 정보의 y좌표를 제공한다. 제공값은 카텍 좌표계 값으로 제공된다. 이 좌표값은 지도 API와 연동 가능하다.
+	
+	@Override
+	public String toString() {
+		return "LocalResponse [lastBuildDate=" + lastBuildDate + ", total=" + total + ", start=" + start + ", display="
+				+ display + ", category=" + category + ", items=" + items + ", title=" + title + ", link=" + link
+				+ ", description=" + description + ", telephone=" + telephone + ", address=" + address
+				+ ", roadAddress=" + roadAddress + ", mapx=" + mapx + ", mapy=" + mapy + "]";
+	}
+	
+	
 }

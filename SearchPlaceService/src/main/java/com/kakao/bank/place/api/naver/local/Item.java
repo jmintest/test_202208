@@ -13,4 +13,14 @@ public class Item {
     public String roadAddress;// 서울특별시 중구 을지로 76 유안타증권,
     public String mapx;// 310636,
     public String mapy;// 551982
+    
+	@Override
+	public String toString() {
+		return "Item [title=" + title + ", link=" + link + ", category=" + category + ", description=" + description
+				+ ", telephone=" + telephone + ", address=" + address + ", roadAddress=" + roadAddress + ", mapx="
+				+ mapx + ", mapy=" + mapy + "]";
+	}
+    
+    
+    
 }

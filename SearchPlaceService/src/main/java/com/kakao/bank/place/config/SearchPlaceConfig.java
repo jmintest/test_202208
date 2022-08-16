@@ -4,7 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.kakao.bank.place.api.KakaoLocalSearchAPI;
+import com.kakao.bank.place.api.KakaoLocalAPI;
+import com.kakao.bank.place.api.NaverSearchAPI;
 
 @Configuration
 public class SearchPlaceConfig {
@@ -15,7 +16,12 @@ public class SearchPlaceConfig {
 	}
 	
 	@Bean
-	public KakaoLocalSearchAPI kakaoSearchPlaceAPI(WebClient webClient) {
-		return new KakaoLocalSearchAPI(webClient);
+	public KakaoLocalAPI kakaoSearchPlaceAPI(WebClient webClient) {
+		return new KakaoLocalAPI(webClient);
+	}
+	
+	@Bean
+	public NaverSearchAPI naverSearchPlaceAPI(WebClient webClient) {
+		return new NaverSearchAPI(webClient);
 	}
 }
