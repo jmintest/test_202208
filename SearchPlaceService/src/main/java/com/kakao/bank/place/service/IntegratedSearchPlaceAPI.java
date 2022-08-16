@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.kakao.bank.place.api.KakaoLocalAPI;
 import com.kakao.bank.place.api.NaverSearchAPI;
@@ -20,9 +20,8 @@ import com.kakao.bank.place.dto.SearchPlaceResponse;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 
-@Component
+@Service
 public class IntegratedSearchPlaceAPI {
-
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -31,6 +30,9 @@ public class IntegratedSearchPlaceAPI {
 	
 	@Autowired
 	private NaverSearchAPI naverAPI;
+	
+	@Autowired
+	private SearchKeywordCounter counter;
 	
 	@Value("${api.itg.count:10}")
 	private int totalCount;
@@ -49,10 +51,12 @@ public class IntegratedSearchPlaceAPI {
 		.map(response->{
 			List<Place> place = response.place;
 			for (Place place2 : place) {
-				logger.info("place [name={}/address={}/source={}]", place2.place_name, place2.address_name, place2.source);
+				logger.info("place [query={}/name={}/address={}/source={}]", query, place2.place_name, place2.address_name, place2.source);
 			}
 			return response;
 		})
+//		.doOnSubscribe(e -> { System.out.println("doOnSubscribe");})
+		.doOnSuccess(e -> { counter.increment(query).subscribe();})
 		.log();
 		
 	}
