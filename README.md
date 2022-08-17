@@ -77,9 +77,6 @@ api.response.timeout=1
 spring.redis.host=172.16.0.187
 spring.redis.port=6379
 
-logging.file.path=./data/logs
-logging.file.name=keyword-rank.log
-
 # 결과 반환 개수
 api.itg.redis.prefix=keyword:
 # redis prefix 키
