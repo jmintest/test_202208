@@ -21,7 +21,7 @@
  * Micro service architecture : 반응성(Low Latency), 확장성(Scalability), 가용성(Availability)을 높이기 위한 전략으로 MSA 아키텍쳐를 구성하였습니다.
  docker/kubernetes 등의 기술과 연계하면 상시 동작하는 서비스로 구성할 수 있습니다. 
 * Spring cloud(gateway, eureka) : Micro service architecture 구성을 위하여 Spring cloud의 gateway와 eureka server를 활용하였습니다.
-
+* `server.port=0` : random server port를 사용하여 같은 노드에서도 여러 서비스를 실행 할 수 있게 구성하였습니다.
 ```
 서비스 오류 및 장애 처리 방법에 대한 고려
 대용량 트래픽 처리를 위한 반응성(Low Latency), 확장성(Scalability), 가용성(Availability)을 높이기 위한 고려
@@ -33,6 +33,62 @@
  ```
  대용량 트래픽 처리를 위한 반응성(Low Latency)
  ```
+ 
+## 프로젝트 설명
+ * ApiGateway : spring cloud gateway, end point server
+ * DiscoverService : Eureka discovery server
+ * KeywordRankService : 키워드 검색 목록 서비스
+ * SearchPlaceService : 장소 검색 서비스
+ 
+## 주요 설정
+
+### SearchPlaceService
+
+```yml
+# redis 접속 정보
+spring.redis.host=127.0.0.1
+spring.redis.port=6379
+
+# 카카오 API 접속 정보
+api.kakao.url=https://dapi.kakao.com
+api.kakao.url.local.search=/v2/local/search/keyword.json
+api.kakao.accessToken=5107c1f7fc6b2b98959417aa5a07ad1d
+
+# 네이버 API 접속 정보
+api.naver.url=https://openapi.naver.com
+api.naver.url.local.search=/v1/search/local.json
+api.naver.client-id=nRQjKOm0VztkH8T24xvx
+api.naver.client-secret=cK6kFInGeU
+
+# 결과 반환 개수
+api.itg.count=10
+# redis prefix 키
+api.itg.redis.prefix=keyword: 
+
+# 카카오/네이버 API Response timeout 설정
+api.response.timeout=1
+```
+ * **redis 접속 정보 변경 요방**
+
+### KeywordRankService
+
+```yml
+# redis 접속 정보
+spring.redis.host=172.16.0.187
+spring.redis.port=6379
+
+logging.file.path=./data/logs
+logging.file.name=keyword-rank.log
+
+# 결과 반환 개수
+api.itg.redis.prefix=keyword:
+# redis prefix 키
+api.rank.count=10
+```
+ * **redis 접속 정보 변경 요방**
+
+## 프로젝트 실행
+ * DiscoverService/ApiGateway/KeywordRankService/SearchPlaceService 네개 서비스 동시 실행
  
 ## API
 
