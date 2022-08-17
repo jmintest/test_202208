@@ -20,7 +20,7 @@ public class SearchPlaceController {
 	private IntegratedSearchPlaceAPI api;
 	
 	@GetMapping(path = "/place")
-	public Mono<SearchPlaceResponse> place(@RequestParam("query") String query) {
+	public Mono<SearchPlaceResponse> place(@RequestParam(name = "query", required = true) String query) {
 		return api.get(query);
 	}
 }

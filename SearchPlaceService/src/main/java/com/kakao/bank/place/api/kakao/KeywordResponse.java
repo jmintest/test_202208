@@ -1,5 +1,6 @@
 package com.kakao.bank.place.api.kakao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -13,6 +14,11 @@ public class KeywordResponse {
 	@Override
 	public String toString() {
 		return "KeywordResponse [meta=" + meta + ", documents=" + documents + "]";
+	}
+	public static KeywordResponse empty() {
+		KeywordResponse retval = new KeywordResponse();
+		retval.documents = new ArrayList<>();
+		return retval;
 	}
 	
 	

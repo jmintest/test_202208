@@ -6,7 +6,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.kakao.bank.place.api.kakao.KeywordResponse;
 
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
 
 public class KakaoLocalAPI {
 
@@ -38,6 +37,7 @@ public class KakaoLocalAPI {
 		.header("Authorization", String.format("KakaoAK %s", accessToken))
 		.retrieve()
 		.bodyToMono(KeywordResponse.class)
+		.onErrorReturn(KeywordResponse.empty())
 		.log();
 		
 //		.map(body -> {

@@ -6,7 +6,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.kakao.bank.place.api.naver.LocalResponse;
 
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
 
 public class NaverSearchAPI {
 
@@ -47,6 +46,7 @@ public class NaverSearchAPI {
 		.header("X-Naver-Client-Secret", clientSecret)
 		.retrieve()
 		.bodyToMono(LocalResponse.class)
+		.onErrorReturn(LocalResponse.empty())
 		.log();
 //		.map(body -> {
 //			System.out.println(body + " testest");

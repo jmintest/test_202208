@@ -1,5 +1,6 @@
 package com.kakao.bank.place.api.naver;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -30,6 +31,12 @@ public class LocalResponse {
 				+ display + ", category=" + category + ", items=" + items + ", title=" + title + ", link=" + link
 				+ ", description=" + description + ", telephone=" + telephone + ", address=" + address
 				+ ", roadAddress=" + roadAddress + ", mapx=" + mapx + ", mapy=" + mapy + "]";
+	}
+	
+	public static LocalResponse empty() {
+		LocalResponse retval = new LocalResponse();
+		retval.items = new ArrayList<>();
+		return retval;
 	}
 	
 	
