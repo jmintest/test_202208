@@ -35,7 +35,7 @@
  ```
  
 ## 프로젝트 설명
- * ApiGateway : spring cloud gateway, end point server
+ * ApiGateway : spring cloud gateway
  * DiscoverService : Eureka discovery server
  * KeywordRankService : 키워드 검색 목록 서비스
  * SearchPlaceService : 장소 검색 서비스
