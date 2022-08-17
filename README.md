@@ -7,7 +7,6 @@
 ## 사용 기술
  * Java 8
  * Spring boot 2.7.2
- * Undertow
  * Micro service architecture
  * Spring cloud(gateway, eureka)
  * Webflux(+WebClient)
