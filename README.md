@@ -108,9 +108,9 @@ curl --location --request GET 'http://localhost:8080/keyword/rank'
 
 
 
-
-
-
-
-
-
+## 기타
+ * Junit code coverage
+   * https://github.com/jmintest/test_202208/issues/11#issuecomment-1217814712
+   * https://github.com/jmintest/test_202208/issues/11#issuecomment-1217872793
+ * 부하 테스트(Jmeter)
+   *  https://github.com/jmintest/test_202208/issues/11#issuecomment-1217885798
