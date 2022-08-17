@@ -17,12 +17,12 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: search-service
-        uri: lb://SEARCH-SERVICE
+      - id: search-place-service
+        uri: lb://SEARCH-PLACE-SERVICE
         predicates:
         - Path=/search/**
-      - id: keywork-service
-        uri: lb://KEYWORK-SERVICE
+      - id: keyword-rank-service
+        uri: lb://KEYWORD-RANK-SERVICE
         predicates:
         - Path=/keyword/**        
 logging:
