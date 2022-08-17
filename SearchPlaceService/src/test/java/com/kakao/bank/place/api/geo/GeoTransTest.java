@@ -1,10 +1,12 @@
 package com.kakao.bank.place.api.geo;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.kakao.bank.place.util.geo.GeoTrans;
 import com.kakao.bank.place.util.geo.GeoTransPoint;
 
+@Disabled
 class GeoTransTest {
 
 	// https://www.androidpub.com/android_dev_info/1318647

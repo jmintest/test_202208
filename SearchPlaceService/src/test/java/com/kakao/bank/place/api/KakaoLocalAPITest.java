@@ -1,5 +1,6 @@
 package com.kakao.bank.place.api;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,6 +9,7 @@ import com.kakao.bank.place.service.IntegratedSearchPlaceAPI;
 
 
 @SpringBootTest
+@Disabled
 class KakaoLocalAPITest {
 
 	@Autowired

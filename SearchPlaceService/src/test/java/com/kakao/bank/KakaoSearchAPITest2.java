@@ -3,6 +3,7 @@ package com.kakao.bank;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -13,12 +14,14 @@ import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
 import reactor.netty.http.client.HttpClient;
 
+@Disabled
 public class KakaoSearchAPITest2 {
 
 	
 	private static String API_URL = "https://dapi.kakao.com/v2/local/search/keyword.json";
 	
 	@Test
+	@Disabled
 	void test5() {
 		
 		HttpClient httpClient = HttpClient.create()
